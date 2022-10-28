@@ -9,8 +9,33 @@ phases:
       - echo "Package & Dependicies are getting installed"
       - npm -f install
       - echo "Packages have been installed"
+      - echo "This is build phase..... Zipping my Lambda function"
+      - zip -r deployment_package.zip index.html
       - echon "Storing Build Artifact to the Location"
+      
+  post build:
+    commands:
+      - echo "deploying to lambda"
+      - aws lambda update-function-code --function-name hello_world --zip-file fileb://deployment_package.zip
 artifacts:
   type: zip
   paths:
     - '*'
+
+
+# version: 0.2
+
+# phases:
+#   install: 
+#     runtime-versions:
+#       nodejs: 10
+#   build:
+#     commands:
+#       - echo "Package & Dependicies are getting installed"
+#       - npm -f install
+#       - echo "Packages have been installed"
+#       - echon "Storing Build Artifact to the Location"
+# artifacts:
+#   type: zip
+#   paths:
+#     - '*'
