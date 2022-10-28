@@ -10,7 +10,7 @@ phases:
       - npm -f install
       - echo "Packages have been installed"
       - echo "This is build phase..... Zipping my Lambda function"
-      - zip -r deployment_package.zip index.html
+      - zip -r deployment_package.zip index.js
       - echon "Storing Build Artifact to the Location"
       
   post build:
