@@ -20,8 +20,8 @@ phases:
 artifacts:
   type: zip
   paths:
-    - '*'
-
+    - '**/*'
+    
 
 # version: 0.2
 
